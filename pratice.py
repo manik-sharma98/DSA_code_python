@@ -153,4 +153,19 @@ def isItpossible(s):
         return 1
     else:
         return 0
-print(isItpossible('abccab'))
+#print(isItpossible('abccab'))
+costs = [7]
+def maxIceCream(costs: list[int], coins: int) -> int:
+        costs.sort()
+        bars = 0
+        summ = 0
+        for ic in costs:
+            if summ < coins and coins >= ic:
+                summ += ic
+                bars += 1
+        return bars
+print(maxIceCream(costs,7))
+
+adjacentPairs = [[2,1],[3,4],[3,2]]
+#1743
+#def restoreArray(self, adjacentPairs: list[list[int]])
