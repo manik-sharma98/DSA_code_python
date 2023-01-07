@@ -164,8 +164,21 @@ def maxIceCream(costs: list[int], coins: int) -> int:
                 summ += ic
                 bars += 1
         return bars
-print(maxIceCream(costs,7))
+#print(maxIceCream(costs,7))
 
+def canCompleteCircuit(gas: list[int], cost: list[int]) -> int:
+        if sum(gas) < sum(cost):
+            return -1
+        total = 0
+        res = 0
+        for i in range(len(cost)):
+            total += gas[i] - cost[i]
+
+            if total < 0:
+                total = 0
+                res = i + 1
+        return res
+#print(canCompleteCircuit([1,2,3,4,5],[3,4,5,1,2]))
 adjacentPairs = [[2,1],[3,4],[3,2]]
 #1743
 #def restoreArray(self, adjacentPairs: list[list[int]])
