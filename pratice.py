@@ -178,7 +178,22 @@ def canCompleteCircuit(gas: list[int], cost: list[int]) -> int:
                 total = 0
                 res = i + 1
         return res
+        
 #print(canCompleteCircuit([1,2,3,4,5],[3,4,5,1,2]))
+
+def maxPoints(points: list[list[int]]) -> int:
+    n = len(points)
+    if n == 1:
+        return 1
+    result = 2
+    for i in range(n):
+        cnt = collections.defaultdict(int)
+        for j in range(n):
+            if j != i:
+                cnt[math.atan2(points[j][1] - points[i][1],points[j][0] - points[i][0])] += 1
+        result = max(result, max(cnt.values()) + 1)
+    return result
+print(maxPoints([[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]))
 adjacentPairs = [[2,1],[3,4],[3,2]]
 #1743
 #def restoreArray(self, adjacentPairs: list[list[int]])
