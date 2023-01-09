@@ -1,5 +1,6 @@
 import math
 import collections
+from typing import Optional
 def sorted(s,i):
     if i == len(s):
         return
@@ -193,7 +194,32 @@ def maxPoints(points: list[list[int]]) -> int:
                 cnt[math.atan2(points[j][1] - points[i][1],points[j][0] - points[i][0])] += 1
         result = max(result, max(cnt.values()) + 1)
     return result
-print(maxPoints([[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]))
+#print(maxPoints([[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]))
+class TreeNode:
+     def __init__(self, val=0, left=None, right=None):
+         self.val = val
+         self.left = left
+         self.right = right
+         
+def preorderTraversal(root: Optional[TreeNode]) -> list[int]:
+        ans = []
+
+        def dfs(node):
+            if not node:
+                return 
+            dfs(node.left)
+            dfs(node.right)
+            ans.append(node.val)
+            
+        dfs(root)
+        return ans
+root = TreeNode(1)
+root.right = TreeNode(2)
+root.right.right = TreeNode(None)
+root.right.left = TreeNode(3)
+
+print(preorderTraversal(root))
+
 adjacentPairs = [[2,1],[3,4],[3,2]]
 #1743
 #def restoreArray(self, adjacentPairs: list[list[int]])
