@@ -43,3 +43,38 @@ def insert_sort(nums):
         nums[j+1] = x
     return nums
 print(insert_sort([10, 5, 8, 20, 2, 18]))
+
+#merge_sort()
+def merge(nums,low,mid,high):
+    l1 = nums[low:mid+1]
+    l2 = nums[mid+1:high+1]
+    i,j = 0,0
+    k = low
+    while i < len(l1) and j < len(l2):
+        if l1[i] < l2[j]:
+            nums[k] = l1[i]
+            i += 1
+            k += 1
+        else:
+            nums[k] = l2[j]
+            j += 1
+            k += 1
+    while i < len(l1):
+        nums[k] = l1[i]
+        i += 1
+        k += 1
+    while j < len(l2):
+        nums[k] = l2[j]
+        j += 1
+        k += 1
+
+def merge_sort(nums,l,r):
+    if r>l:
+        mid = (l+r)//2
+        merge_sort(nums,l,mid)
+        merge_sort(nums,mid+1,r)
+        merge(nums,l,mid,r)
+    return nums
+arr = [10, 5, 30, 15, 7]
+print(merge_sort(arr,0,len(arr)-1))
+
