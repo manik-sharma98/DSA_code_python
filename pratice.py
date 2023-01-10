@@ -223,3 +223,18 @@ print(preorderTraversal(root))
 adjacentPairs = [[2,1],[3,4],[3,2]]
 #1743
 #def restoreArray(self, adjacentPairs: list[list[int]])
+
+def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]):
+    queue = [(p,q)]
+    while queue:
+        node1,node2 = queue.pop()
+        if not node1 and not node2:
+            continue
+        elif None in [node1,node2]:
+            return False
+        else:
+            if node1.val != node2.val:
+                return False
+            queue.append(node1.left,node2.left)
+            queue.append(node1.right,node2.right)
+    return True

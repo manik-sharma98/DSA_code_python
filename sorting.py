@@ -44,7 +44,7 @@ def insert_sort(nums):
     return nums
 print(insert_sort([10, 5, 8, 20, 2, 18]))
 
-#merge_sort()
+#merge_sort() -> n * logn
 def merge(nums,low,mid,high):
     l1 = nums[low:mid+1]
     l2 = nums[mid+1:high+1]
@@ -78,3 +78,43 @@ def merge_sort(nums,l,r):
 arr = [10, 5, 30, 15, 7]
 print(merge_sort(arr,0,len(arr)-1))
 
+#union_sorted_arrays
+def unio_sorted(l1,l2):    
+    i = 0
+    j = 0
+    k = 0
+    l3 = []
+    while i < len(l1) and j < len(l2):
+        if i > 0 and l1[i] == l1[i-1]:
+            i += 1
+        elif j > 0 and l2[j] == l2[j-1]:
+            j += 1
+        elif l1[i] < l2[j]:
+            #print(l1[i],end=' ')
+            i += 1 
+            k += 1
+        elif l1[i] > l2[j]:
+            #print(l2[j],end=' ')
+            j += 1 
+            k += 1
+        else:
+            print(l1[i],end=' ')
+            i += 1
+            j += 1
+            k += 1
+    '''
+    while i < len(l1):
+        if i > 0 and l1[i] != l1[i-1]:
+            #print(l1[i],end=' ')
+            i += 1
+    while j < len(l2):
+        if j > 0 and l2[j] != l2[j-1]:
+            #print(l2[j],end=' ')
+            j += 1
+    '''
+    
+
+print(unio_sorted([2,10,20,20],[2,3,20,40]))
+
+
+        
