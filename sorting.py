@@ -42,7 +42,7 @@ def insert_sort(nums):
             j -= 1
         nums[j+1] = x
     return nums
-print(insert_sort([10, 5, 8, 20, 2, 18]))
+#print(insert_sort([10, 5, 8, 20, 2, 18]))
 
 #merge_sort() -> n * logn
 def merge(nums,low,mid,high):
@@ -76,25 +76,24 @@ def merge_sort(nums,l,r):
         merge(nums,l,mid,r)
     return nums
 arr = [10, 5, 30, 15, 7]
-print(merge_sort(arr,0,len(arr)-1))
+#print(merge_sort(arr,0,len(arr)-1))
 
 #union_sorted_arrays
 def unio_sorted(l1,l2):    
     i = 0
     j = 0
     k = 0
-    l3 = []
     while i < len(l1) and j < len(l2):
         if i > 0 and l1[i] == l1[i-1]:
             i += 1
         elif j > 0 and l2[j] == l2[j-1]:
             j += 1
         elif l1[i] < l2[j]:
-            #print(l1[i],end=' ')
+            print(l1[i],end=' ')
             i += 1 
             k += 1
         elif l1[i] > l2[j]:
-            #print(l2[j],end=' ')
+            print(l2[j],end=' ')
             j += 1 
             k += 1
         else:
@@ -102,19 +101,36 @@ def unio_sorted(l1,l2):
             i += 1
             j += 1
             k += 1
-    '''
     while i < len(l1):
         if i > 0 and l1[i] != l1[i-1]:
-            #print(l1[i],end=' ')
+            print(l1[i],end=' ')
             i += 1
     while j < len(l2):
         if j > 0 and l2[j] != l2[j-1]:
-            #print(l2[j],end=' ')
+            print(l2[j],end=' ')
             j += 1
-    '''
-    
+    print(end='\n')
 
-print(unio_sorted([2,10,20,20],[2,3,20,40]))
+#unio_sorted([2,10,20,20],[2,3,20,40])
+
+def intersection_sorted(l1,l2):
+    i = 0
+    j = 0 
+    while i < len(l1) and j < len(l2):
+        if i > 0 and l1[i] == l1[i-1]:
+            i += 1
+            continue
+        elif l1[i] < l2[j]:
+            i += 1 
+        elif l1[i] > l2[j]:
+            j += 1
+        else:
+            print(l1[i],end=' ')
+            i += 1
+            j += 1
+    print(end='\n')
+    
+#intersection_sorted([2,10,20,20],[2,3,20,40])
 
 
         
