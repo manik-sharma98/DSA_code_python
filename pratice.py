@@ -238,3 +238,26 @@ def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]):
             queue.append(node1.left,node2.left)
             queue.append(node1.right,node2.right)
     return True
+
+def minTime(n: int, edges: list[list[int]], hasApple: list[bool]) -> int:
+    adj = {i:[] for i in range(n)}
+
+    for child,parent in edges:
+        adj[child].append(parent)
+        adj[parent].append(child)
+    
+    print(adj)
+    
+    def dfs(cur,parent):
+        time = 0
+
+        for child in adj[cur]:
+            if child == parent:
+                continue
+            childtime = dfs(child,cur)
+            if childtime or hasApple[child]:
+                time += 2 + childtime
+        return time
+    return dfs(0,-1)
+print(minTime(7,[[0,1],[0,2],[1,4],[1,5],[2,3],[2,6]],[False,False,True,False,False,True,False]))
+

@@ -44,7 +44,7 @@ def insert_sort(nums):
     return nums
 #print(insert_sort([10, 5, 8, 20, 2, 18]))
 
-#merge_sort() -> n * logn
+#merge_sort() -> O(n*log(n))
 def merge(nums,low,mid,high):
     l1 = nums[low:mid+1]
     l2 = nums[mid+1:high+1]
@@ -132,5 +132,22 @@ def intersection_sorted(l1,l2):
     
 #intersection_sorted([2,10,20,20],[2,3,20,40])
 
+#Quick_sort -> O(n*log(n))
+def partion(nums,l,h):
+    pivot = nums[h]
+    i = l - 1
+    for j in range(l,h):
+        if nums[j] <= pivot:
+            i += 1
+            nums[i],nums[j] = nums[j],nums[i]
+    nums[i+1],nums[h] = nums[h],nums[i+1]
+    return i + 1
+def quicksort(arr,low,high):
+    if low < high:
+        pi = partion(arr,low,high)
+        quicksort(arr,low,pi-1)
+        quicksort(arr,pi+1,high)
 
-        
+arr = [10, 7, 8, 9, 1, 5]
+quicksort(arr,0,5)
+print(arr)
