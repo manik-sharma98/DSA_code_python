@@ -150,6 +150,34 @@ def quicksort(arr,low,high):
 
 arr = [10, 7, 8, 9, 1, 5]
 quicksort(arr,0,5)
+#print(arr)
+
+#Heap Sort 
+def max_heapify(nums,n,i):
+    largest = i
+    left = 2 * i + 1
+    right = 2 * i + 2
+
+    if left < n and nums[left] > nums[largest]:
+        largest = left
+    if right < n and nums[right] > nums[largest]:
+        largest = right
+    if largest != i:
+        nums[i],nums[largest] = nums[largest],nums[i]
+        max_heapify(nums,n,largest)
+
+def bulid_heap(nums):
+    n = len(nums)
+    for i in range((n-2)//2,-1,-1):
+        max_heapify(arr,n,i)
+
+def heap_sort(nums):
+    n = len(nums)
+    bulid_heap(nums)
+    for i in range(n-1,0,-1):
+        nums[i],nums[0] = nums[0],nums[i]
+        max_heapify(nums,i,0)
+
+arr = [10, 7, 8, 9, 1, 5]
+heap_sort(arr)
 print(arr)
-
-
