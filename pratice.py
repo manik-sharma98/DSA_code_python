@@ -259,5 +259,52 @@ def minTime(n: int, edges: list[list[int]], hasApple: list[bool]) -> int:
                 time += 2 + childtime
         return time
     return dfs(0,-1)
-print(minTime(7,[[0,1],[0,2],[1,4],[1,5],[2,3],[2,6]],[False,False,True,False,False,True,False]))
+#print(minTime(7,[[0,1],[0,2],[1,4],[1,5],[2,3],[2,6]],[False,False,True,False,False,True,False]))
 
+def minflips(s):
+    zeros = 0
+    ones = 0
+    output = 0
+    for c in s:
+        if c == '0':
+            zeros += 1
+    output = zeros
+    for c in s:
+        if c == '0':
+            zeros -= 1
+        elif c == '1':
+            ones += 1
+        output = min(output, zeros+ones)
+    return output
+s = "00011000"    
+#print(minflips(s))    
+
+def kadane_algo(nums):
+    output = 0
+    summ = 0
+    for i in range(len(nums)):
+        summ = max(summ+nums[i],nums[i])
+        output = max(output,summ)
+    return output    
+print(kadane_algo( [-2, 3, -1, 2]))
+
+def maxSubarraySumCircular(nums):
+    curMin = math.inf
+    curMax = -math.inf
+    array_sum = 0
+    max_sum = -math.inf
+    min_sum = math.inf
+
+    for i in range(len(nums)):
+        array_sum += nums[i]
+
+        curMax = max(curMax+nums[i],nums[i])
+        max_sum = max(max_sum,curMax)
+
+        curMin = min(curMin+nums[i],curMin)
+        min_sum = min(min_sum,curMin)
+
+    if min_sum == array_sum:
+        return max_sum
+    
+    return max(max_sum,array_sum-min_sum)
