@@ -218,7 +218,7 @@ root.right = TreeNode(2)
 root.right.right = TreeNode(None)
 root.right.left = TreeNode(3)
 
-print(preorderTraversal(root))
+#print(preorderTraversal(root))
 
 adjacentPairs = [[2,1],[3,4],[3,2]]
 #1743
@@ -286,7 +286,7 @@ def kadane_algo(nums):
         summ = max(summ+nums[i],nums[i])
         output = max(output,summ)
     return output    
-print(kadane_algo( [-2, 3, -1, 2]))
+#print(kadane_algo( [-2, 3, -1, 2]))
 
 def maxSubarraySumCircular(nums):
     curMin = math.inf
@@ -308,3 +308,29 @@ def maxSubarraySumCircular(nums):
         return max_sum
     
     return max(max_sum,array_sum-min_sum)
+
+
+def subarraysDivByK(nums,k):
+    n = len(nums)
+    output = 0
+    for i in range(n):
+        sub_sum = 0
+        for j in range(i,n):
+            sub_sum += nums[j]
+            #print(sub_sum)
+            if sub_sum%k == 0:
+                output += 1
+    return output
+
+def subarraysDivByK_os(nums,k):
+    remainder = collections.defaultdict(int)
+    remainder[0] = 1
+    res = prefix_sum = 0
+    for n in nums:
+        prefix_sum += n
+        remainder_num = prefix_sum % k
+
+        res += remainder[remainder_num]
+        remainder[remainder_num] += 1
+
+#print(subarraysDivByK([1,2,3],3))
