@@ -334,3 +334,23 @@ def subarraysDivByK_os(nums,k):
         remainder[remainder_num] += 1
 
 #print(subarraysDivByK([1,2,3],3))
+
+def findSubsequences(nums):
+    res = set()
+    subsequences = []
+    
+    def back_track(index):
+        if len(nums) == index:
+            if len(subsequences) >= 2:
+                res.add(tuple(subsequences))
+            return
+        if not subsequences or subsequences[-1] <= nums[index]:
+            subsequences.append(nums[index])
+            back_track(index+1)
+            subsequences.pop()
+        back_track(index+1)
+    
+    back_track(0)
+    return res
+    
+print(findSubsequences([4,6,7,7]))
