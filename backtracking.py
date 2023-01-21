@@ -31,6 +31,28 @@ def subsequences_string():
     nums = "abc"
     back_track(nums,0,curr_start)
     return res
-	
-	
-print(subsequences())
+
+print(subsequences_string())
+
+def restoreIpAddresses(s):
+    ips = []
+    ''''''
+    def back_track(start,octets=[]):
+        if len(octets) == 4 and start == len(s):
+            ips.append('.'.join(octets))
+            return
+        for size in range(1,4):
+            octet = s[start:start+size]
+            if len(octet) > 1 and (octet[0]== '0' or int(octet)>255):
+                continue
+            if len(octets) < 4:
+                octets.append(octet)
+                back_track(start + size)
+                octets.pop()
+        
+    back_track(0)
+    return ips
+s = '25525511135'
+    
+print(restoreIpAddresses(s))
+
