@@ -76,3 +76,11 @@ def non_rep(s):
             return i
     return -1 
 print(non_rep('abccd'))
+
+
+def sub_str(s):
+    
+    for i in range(len(s)+1):
+        for j in range(i,len(s)):
+            print(s[i:j+1])
+sub_str('abc')
