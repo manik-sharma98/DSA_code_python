@@ -56,3 +56,23 @@ s = '25525511135'
     
 print(restoreIpAddresses(s))
 
+def partition(s):
+    res = []
+    def is_palin(s):
+        return s ==s[::-1]
+    def back_track(s,index,cur_str):
+        if index == len(s):
+            res.append(list(cur_str))
+            return
+        for i in range(index,len(s)):
+            can = s[index:i+1]
+            #print(can)
+            if can != can[::-1]:
+                continue
+            cur_str.append(can)
+            back_track(s,i+1,cur_str)
+            cur_str.pop()
+    cur = []
+    back_track(s,0,cur)
+    return res
+print(partition('aab'))
