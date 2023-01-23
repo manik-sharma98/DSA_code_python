@@ -32,7 +32,7 @@ def subsequences_string():
     back_track(nums,0,curr_start)
     return res
 
-print(subsequences_string())
+#print(subsequences_string())
 
 def restoreIpAddresses(s):
     ips = []
@@ -54,7 +54,7 @@ def restoreIpAddresses(s):
     return ips
 s = '25525511135'
     
-print(restoreIpAddresses(s))
+#print(restoreIpAddresses(s))
 
 def partition(s):
     res = []
@@ -75,4 +75,31 @@ def partition(s):
     cur = []
     back_track(s,0,cur)
     return res
-print(partition('aab'))
+#print(partition('aab'))
+
+
+def substring(s):
+    all_sub_string = set()
+    def back_track(s,index,sub_string):
+        all_sub_string.add(''.join(sub_string))
+        for i in range(index,len(s)):
+            cur_string = s[index:i+1]
+            sub_string.append(cur_string)
+            back_track(s,i+1,sub_string)
+            sub_string.pop()
+    back_track(s,0,sub_string=[])
+    return all_sub_string
+
+def subseqeunce(s):
+    all_sub_string = []
+    def back_track(s,index,sub_string):
+        all_sub_string.append(''.join(sub_string))
+        for i in range(index,len(s)):
+            sub_string.append(s[i])
+            back_track(s,i+1,sub_string)
+            sub_string.pop()
+    back_track(s,0,sub_string=[])
+    return all_sub_string
+print(subseqeunce('abc'))
+print(substring('abc'))
+
