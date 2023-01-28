@@ -84,6 +84,33 @@ class LinkedList():
             temp = temp.next
         return -1
 
+    def reverse(self):
+        curr = self.head
+        prev = None
+        while curr:
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        while prev:
+            print(prev.val,end='  ')
+            prev = prev.next
+        print()
+     
+    def reverse_rec(self,curr,prev=None):
+        if curr == None:
+            return prev
+        next = curr.next
+        curr.next = prev
+        return self.reverse_rec(next,curr)
+
+    def print_list_rev(self,node):
+        head = node
+        while head:
+            print(head.val,end='  ')
+            head = head.next
+        print()
+     
     def nthfromlast(self,n):
         frist = self.head
         second = self.head
@@ -94,6 +121,7 @@ class LinkedList():
             second = second.next
         print('Nth node from last -->',second.val)
 
+    
 l1 = LinkedList()
 l1.push(30)
 l1.push(20)
@@ -106,20 +134,12 @@ l1.sorted_insert(20)
 l1.sorted_insert(25)
 l1.print_list()
 print('\n')
+l1.head = l1.reverse_rec(l1.head)
+l1.print_list_rev(l1.head)
 l1.middle()
 l1.nthfromlast(2)
 l1.del_frist()
 print('Element is at',l1.search(30),'Postion')
+l1.reverse()
 
-def reverse(node):
-    if node == None:
-        return Node
-    
-    if node.next == None:
-        return node 
-
-    node1 = reverse(node.next)
-    node.next.next = node
-    node.next = None
-    return node1
     
