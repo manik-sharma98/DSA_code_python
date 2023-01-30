@@ -57,7 +57,8 @@ class dll():
         while temp:
             print(temp.val,end=' ')
             temp = temp.next
-        
+        print()
+    
     def reverse(self):
         temp = self.head
         prev_node = None
