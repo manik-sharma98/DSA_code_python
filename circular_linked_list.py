@@ -62,11 +62,11 @@ l1.tail = l1.push(30)
 l1.tail = l1.push(40)
 l1.tail = l1.push(50)
 
-#l1.tail = l1.delete(20)
-#l1.tail = l1.delete(40)
-l1.tail = l1.del_end(l1.tail)
+l1.tail = l1.delete(20)
+l1.tail = l1.delete(40)
 l1.tail = l1.del_end(l1.tail)
 
-print(l1.tail.Data)
+
+
 l1.print()
 
