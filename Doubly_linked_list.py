@@ -38,6 +38,7 @@ class dll():
         while temp.next.next:
             temp = temp.next
         temp.next = None
+    
     def delete(self,val):
         temp = self.head
         prev_node = None
