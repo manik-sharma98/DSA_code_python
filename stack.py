@@ -51,3 +51,29 @@ stck.pop()
 stck.pop()
 stck.print()
 print(stck.size)
+
+s = '()'
+
+def is_match(a,b):
+    if a == '}' and b != '{':
+        return False
+    if a == ')' and b != '(':
+        return False
+    if b == ']' and b != '[':
+        return False
+
+def check_balanced_parenthesis(s):
+    stack = []
+    for char in s:
+        if char == '[' or char == '(' or char == '{':
+            stack.append(char)
+        else:
+            opening_bracket = stack.pop()
+            if is_match(char,opening_bracket) == False:
+                return False 
+    if stack:
+        return False
+    else:
+        return True
+
+print(check_balanced_parenthesis(s))
