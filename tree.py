@@ -30,15 +30,27 @@ def postorder(root):
         postorder(root.right)
         print(root.val, end = ' ')
     
-        
+def height(root):
+    if root is None:
+        return 0
+    lh = height(root.left)
+    rh = height(root.right)
+    h = 1 + max(lh,rh)
+    return h
+    
 root = Node(10)
 root.left = Node(20)
 root.right = Node(30)
 root.right.left = Node(40)
 root.right.right = Node(50)
 
+print('Preorder of binary tree -> ')
 preorder(root)
 print()
+print('Inorder of binary tree -> ')
 inorder(root)
 print()
+print('Postorder of binary tree -> ')
 postorder(root)
+print()
+print('Height of binary tree is ->',height(root))
