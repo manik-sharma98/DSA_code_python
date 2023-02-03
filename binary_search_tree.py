@@ -42,26 +42,6 @@ class BST():
         return root
 
     def insert_it(self,root,x):
-        '''
-        cur = root
-        parent = None
-        while cur != None:
-            parent = cur
-            if cur.val == x:
-                return root
-            elif cur.val < x:
-                cur = cur.left
-            else:
-                cur = cur.right
-        print(parent.val)
-        if parent == None:
-            return Node(x)
-        elif parent.val > x:
-            parent.left = Node(x)
-        else:
-            parent.right = Node(x)
-        return root
-        '''
         parent = None
         curr = root
 
