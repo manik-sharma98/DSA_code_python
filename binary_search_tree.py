@@ -111,6 +111,14 @@ class BST():
                 root = root.right
         return res
     
+    def minValue(self,root):
+        if root is None:
+            return -1
+        cur = root
+        while cur.left:
+            cur = cur.left
+        return cur.val
+        
     def print_bfs(self,root):
         q = deque()
         q.append(root)
@@ -138,3 +146,4 @@ root = bst.delete(root,70)
 bst.print_bfs(root)
 print(bst.floor(root,45))
 print(bst.ceil(root,35))
+print(bst.minValue(root))
