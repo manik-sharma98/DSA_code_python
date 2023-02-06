@@ -86,3 +86,31 @@ heap.insert(7)
 heap.delete(6)
 print(heap.extractmin())
 print(heap.arr)
+
+def bulidheap(arr):
+    n = len(arr)
+    for i in range((n-2)//2,-1,-1):
+        maxheapify(arr,n,i)
+        
+def maxheapify(arr,n,i):
+    largest = i
+    lc = 2*i+1
+    rc = 2*i+2
+    if lc < n and arr[lc] > arr[largest]:
+        largest = lc
+    if rc < n and arr[rc] > arr[largest]:
+        largest = rc
+    if largest != i:
+        arr[i],arr[largest] = arr[largest],arr[i]
+        maxheapify(arr,n,largest)
+    
+def heapsort(arr):
+    n = len(arr)
+    bulidheap(arr)
+    for i in range(n-1,0,-1):
+        arr[i],arr[0] = arr[0],arr[i]
+        maxheapify(arr,i,0)
+    return arr
+
+arr = [3,1,2,5,4]
+print('Sorted using heapsort -> ',heapsort(arr))
