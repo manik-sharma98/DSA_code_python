@@ -1,0 +1,27 @@
+Find graph is Cyclic or not ->
+
+Using BFS
+Using DFS
+Using Disjoint Set
+
+Topological Sorting ->
+
+DFS + Stack
+BFS + Queue (Khan's Algorithm)
+
+Minimum Spanning Tree ->
+
+Prims Algorithm
+Kruskals Algorithm
+
+Shortest Path Problem ->
+
+Dijkstra Algorithm
+Bellmen Ford
+Floyd warshall
+
+Strongly Connected Components ->
+
+Kosaraju's Algorithm
+Tarjans Algorithm
+Articulation Points and Bridges
