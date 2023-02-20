@@ -369,3 +369,25 @@ def findJudge(self, n: int, trust: list[list[int]]) -> int:
             if indegrees[i] == (n-1)  and outdegrees[i] == 0:
                 return i
         return -1
+
+def checkIfPrerequisite(self, numCourses: int, prerequisites: list[list[int]], queries: list[list[int]]) -> list[bool]:
+        graph = collections.defaultdict(list)
+
+        for v,u in prerequisites:
+            graph[u].append(v)
+
+        prepMap = {}
+        def dfs(crcs):
+            if crcs not in prepMap:
+                prepMap[crcs] = set()
+                for next_crc in graph[crcs]:
+                    prepMap[crcs] |= dfs(next_crc)
+                prepMap[crcs].add(crcs)
+            return prepMap[crcs]
+
+        for i in range(numCourses):
+            dfs(i)
+        res= []
+        for u,v in queries:
+            res.append(u in prepMap[v])
+        return res

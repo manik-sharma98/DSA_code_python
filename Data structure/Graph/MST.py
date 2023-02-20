@@ -15,10 +15,10 @@ class prims():
         cost = 0
         heap = [(0,1)]
         while heap:
-            min_cost,city = heapq.heappop(heap)
+            minCost,city = heapq.heappop(heap)
             if city not in visited:
-                cost += min_cost
                 visited.add(city)
+                cost += minCost
                 for next,next_w in self.graph[city]:
                     if next not in visited:
                         heapq.heappush(heap,(next_w,next))
@@ -28,5 +28,4 @@ g = prims(3)
 connections = [[1,2,5],[1,3,6],[2,3,1]]
 for r in range(len(connections)):
     g.add_edge(connections[r][0],connections[r][1],connections[r][2])
-    print(connections[r][0],connections[r][1],connections[r][2])
 print(g.prims_imp())
