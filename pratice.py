@@ -391,3 +391,14 @@ def checkIfPrerequisite(self, numCourses: int, prerequisites: list[list[int]], q
         for u,v in queries:
             res.append(u in prepMap[v])
         return res
+
+maxx = 0
+n = 4
+a = [1,15,13,8]
+for i in range(n):
+    for j in range(i):
+        if(i!=j):
+            s = abs(a[i] - a[j]) + abs(i-j)
+            maxx = max(maxx,s)
+print(maxx)
+
