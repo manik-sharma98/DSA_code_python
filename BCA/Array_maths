@@ -1,0 +1,28 @@
+def generateMatrix(n):
+    matrix = [[0]*n for i in range(n)]
+    top = 0
+    left = 0
+    bottom = n - 1
+    right = n - 1
+    cnt = 1
+    while cnt <= n*n:
+        for i in range(left,right+1):
+            matrix[top][i] = cnt
+            cnt += 1
+        top += 1
+        for i in range(top,bottom+1):
+            matrix[i][right] = cnt 
+            cnt += 1
+        right -= 1
+        for i in range(right,left-1,-1):
+            matrix[bottom][i] = cnt
+            cnt += 1
+        bottom -= 1
+        for i in range(bottom,top-1,-1):
+            matrix[i][left] = cnt 
+            cnt += 1
+        left += 1
+        
+    print(matrix)
+
+generateMatrix(3)
