@@ -401,4 +401,11 @@ for i in range(n):
             s = abs(a[i] - a[j]) + abs(i-j)
             maxx = max(maxx,s)
 print(maxx)
+print('....')
 
+arr = [1,2,3,4,5,6,7,8,9,10]
+print(arr.index(7))
+m = 3
+next_ele = arr[0]
+for i in range(1,n):
+    if 
