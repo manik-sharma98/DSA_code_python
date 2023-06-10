@@ -1,8 +1,10 @@
 def count_subset_sum(i,k,nums,dp):
-    if k == 0:
-        return 1
     if i == 0:
-        return nums[0] == k
+        if k == 0 and arr[0] == 0:
+            return 2
+        if k == 0 or k == arr[0]:
+            return 1
+        return 0
     if dp[i][k] != -1:
         return dp[i][k]
     not_taken = count_subset_sum(i-1,k,nums,dp)
