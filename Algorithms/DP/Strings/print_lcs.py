@@ -10,26 +10,22 @@ def print_lcs(s1,s2):
             else:
                 dp[i][j] = max(dp[i-1][j],dp[i][j-1])
     
-    len_ = dp[n][m]
     i = n
     j = m
-    str1 = ''
-    for k in range(1,len_+1):
-        str1 += '$'
     
+    str2 = ''
     while i > 0 and j > 0:
         if s1[i - 1] == s2[j - 1]:
-            print(i,j)
-            print(s1[i - 1])
-            str1 = s1[i - 1] + str1[:-1]
+            str2 += s1[i - 1] 
             i -= 1
             j -= 1
-        elif s1[i - 1] > s2[j - 1]:
+        elif dp[i-1][j] > dp[i][j-1]:
             i -= 1
         else:
             j -= 1
-    return str1
+    str2 = str2[::-1]
+    return str2
 
-s1 = "abcde"
-s2 = "bdgek"
+s1 = "ABCDGH"
+s2 = "AEDFHR"
 print(print_lcs(s1, s2))
