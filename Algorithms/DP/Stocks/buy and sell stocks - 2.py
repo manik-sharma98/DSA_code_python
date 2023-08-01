@@ -3,11 +3,11 @@ def buy_sell(i,n,buy,dp):
         return 0
     if dp[i][buy] != -1:
         return dp[i][buy]
-    if buy == 0:
+    if buy == 0: # We can buy the stock  
         op1 = 0 + buy_sell(i+1,n,0,dp)
         op2 = -n[i] + buy_sell(i+1,n,1,dp)
         profit = max(op1,op2)
-    if buy == 1:
+    if buy == 1: # We can sell the stocks
         op1 = 0 + buy_sell(i+1,n,1,dp)
         op2 = n[i] + buy_sell(i+1,n,0,dp)
         profit = max(op1,op2)
