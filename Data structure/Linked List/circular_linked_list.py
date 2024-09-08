@@ -1,3 +1,4 @@
+
 class Node:
     def __init__(self,Data) -> None:
         self.Data = Data
